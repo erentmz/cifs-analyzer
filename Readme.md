@@ -85,5 +85,5 @@ zeek -Cr pcaps/cifs.pcap zeek
 Logs will be generated in the logs/ directory.
 ```
 ## Authors
-- Ali Eren Temiz
-- Melih Kemal Sel
+- Ali Eren Temiz  -->  alierentemiz1@gmail.com
+- Melih Kemal Sel -->  selmelihkemal@gmail.com
