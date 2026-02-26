@@ -83,3 +83,7 @@ Or manually:
 zeek -Cr pcaps/cifs.pcap zeek
 
 Logs will be generated in the logs/ directory.
+```
+## Authors
+Ali Eren Temiz
+Melih Kemal Sel
