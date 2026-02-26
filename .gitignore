@@ -1,0 +1,20 @@
+# Logs
+logs/
+*.log
+
+# Zeek runtime files
+*.state
+*.tmp
+
+# Build artifacts
+build/
+*.o
+*.so
+*.hlto
+
+# Ignore all pcaps except sample
+pcaps/*.pcap
+!pcaps/cifs.pcap
+
+# OS files
+.DS_Store

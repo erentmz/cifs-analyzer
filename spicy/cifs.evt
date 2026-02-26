@@ -1,0 +1,63 @@
+protocol analyzer spicy::CIFS over UDP:
+    parse originator with CIFS::Packet,
+    parse responder with CIFS::Packet,
+    ports { 138/udp };
+
+import CIFS;
+
+on CIFS::HostAnnouncement -> event CIFS::hostAnnouncement($conn, 
+                                                        self.serverName, 
+                                                        self.osVersion_1, 
+                                                        self.osVersion_2, 
+                                                        self.serverType.x1,
+                                                        self.serverType.x2,
+                                                        self.serverType.x3,
+                                                        self.serverType.x4,
+                                                        self.browserVersion_1, 
+                                                        self.browserVersion_2, 
+                                                        self.signature_1, 
+                                                        self.signature_2,
+                                                        self.hostComment
+                                                        );
+
+on CIFS::LocalMasterAnnouncement -> event CIFS::localMasterAnnouncement($conn, 
+                                                        self.serverName, 
+                                                        self.osVersion_1, 
+                                                        self.osVersion_2, 
+                                                        self.serverType.x1,
+                                                        self.serverType.x2,
+                                                        self.serverType.x3,
+                                                        self.serverType.x4,
+                                                        self.browserVersion_1, 
+                                                        self.browserVersion_2, 
+                                                        self.signature_1, 
+                                                        self.signature_2,
+                                                        self.hostComment
+                                                        );
+                                                        
+on CIFS::DomainWorkgroup -> event CIFS::domainWorkgroup($conn,
+                                                        self.domain_workgroup,
+							                            self.osVersion_1,
+                                                        self.osVersion_2,
+                                                        self.serverType.x1,
+                                                        self.serverType.x2,
+                                                        self.serverType.x3,
+                                                        self.serverType.x4,
+                                                        self.mysteriousField,
+                                                        self.master_browser
+                                                        );
+
+on CIFS::RequestAnnouncement -> event CIFS::requestAnnouncement($conn,
+                                                        self.unusedFlags,
+                                                        self.computerName
+                                                        );
+
+on CIFS::QueryForPDC    ->     event CIFS::queryForPDC($conn,
+                                                        self.computerName,
+                                                        self.payload_mailslot,
+                                                        self.unicode_computer_name,
+                                                        self.ntVersion,
+                                                        self.lmntToken,
+                                                        self.lm20Token
+                                                        );
+                                                        
